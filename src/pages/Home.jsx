@@ -47,10 +47,10 @@ export const Home = () => {
 						<div className="col-3 cards-carousel" key={char.uid}>
 							<div className="card" style={{ width: "18rem" }}>
 								<img
-									src="https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/characters/${uid}.jpg"
+									src={`https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/characters/${char.uid}.jpg`}
 									className="card-img-top"
 									alt={char.name}
-									style={{ height: "200px", objectFit: "cover" }}
+									style={{ height: "350px", objectFit: "cover" }}
 								/>
 
 								<div className="card-body">
@@ -67,8 +67,8 @@ export const Home = () => {
 
 
 			</div>
-			<div className="planets-section">
-
+			<div className="planets-section container">
+				
 			</div>
 		</div>
 	);
