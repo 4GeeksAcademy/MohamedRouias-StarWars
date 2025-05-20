@@ -1,6 +1,7 @@
 export const initialStore=()=>{
   return{
     characters: [], // Lista de personajes
+    planets: [], // Lista de planetas
     favorites: [] // Lista para los favoritos
   };
 };
@@ -13,6 +14,12 @@ export default function storeReducer(store, action = {}) {
         ...store,
         characters: action.payload // Carga la lista en el array ccharacters[]
       };
+
+    case 'set_planets':
+      return {
+        ...store,
+        planets: action.payload // Carga
+      }
     
     case 'add_favorite':
       //Evitamos que se repitan 
