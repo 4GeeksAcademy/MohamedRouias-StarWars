@@ -1,32 +1,34 @@
 export const initialStore=()=>{
   return{
-    message: null,
-    todos: [
-      {
-        id: 1,
-        title: "Make the bed",
-        background: null,
-      },
-      {
-        id: 2,
-        title: "Do my homework",
-        background: null,
-      }
-    ]
-  }
-}
+    characters: [], // Lista de personajes
+    favorites: [] // Lista para los favoritos
+  };
+};
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
-    case 'add_task':
 
-      const { id,  color } = action.payload
-
+    case 'set_characters':
       return {
         ...store,
-        todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
+        characters: action.payload // Carga la lista en el array ccharacters[]
       };
+    
+    case 'add_favorite':
+      //Evitamos que se repitan 
+      if (store.favorites.includes(action.payload)) return store;
+        return{
+          ...store,
+          favorites: [...store.favorites, action.payload]
+      };
+
+      case  'remove_favorite':
+        return {
+          ...store,
+          favorites: store.favorites.filter(name => name !== action.payload)
+        };
+      
     default:
-      throw Error('Unknown action.');
+      throw Error(`Unknown action type. ${action.payload}`);
   }    
 }
