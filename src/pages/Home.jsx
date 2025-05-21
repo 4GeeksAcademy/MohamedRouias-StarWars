@@ -1,10 +1,10 @@
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 export const Home = () => {
 	const { store, dispatch } = useGlobalReducer();
-
+	
 
 	useEffect(() => {
 		// Cargamos los personajes si no hay ninguno en la store
@@ -29,7 +29,7 @@ export const Home = () => {
 		}
 
 
-		// Cargamos los personajes si no hay ninguno en la store
+		// Cargamos los planetas si no hay ninguno en la store
 		const fetchPlanets = async () => {
 			try {
 				const res = await fetch("https://www.swapi.tech/api/planets");
@@ -46,7 +46,7 @@ export const Home = () => {
 		};
 
 		//Solo hacemos la petició  si aún no hay personajes en la store
-		if (store.characters.length === 0) {
+		if (store.planets.length === 0) {
 			fetchPlanets();
 		}
 
@@ -83,6 +83,7 @@ export const Home = () => {
 									<Link to={`/details/${char.uid}`} className="btn btn-primary">
 										Learn more!
 									</Link>
+									
 								</div>
 							</div>
 						</div>

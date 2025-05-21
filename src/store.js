@@ -1,8 +1,8 @@
 export const initialStore=()=>{
   return{
     characters: [], // Lista de personajes
-    planets: [], // Lista de planetas
-    favorites: [] // Lista para los favoritos
+    planets: [] // Lista de planetas
+
   };
 };
 
@@ -18,8 +18,17 @@ export default function storeReducer(store, action = {}) {
     case 'set_planets':
       return {
         ...store,
-        planets: action.payload // Carga
-      }
+        planets: action.payload
+      };
+
+    case 'learn_more':
+      
+      return {
+        ...store,
+        characters: store.characters.map(character =>
+          character.id === action.payload.id ? action.payload : character
+        )
+      };
     
     case 'add_favorite':
       //Evitamos que se repitan 
