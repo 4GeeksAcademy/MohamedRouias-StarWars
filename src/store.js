@@ -1,8 +1,8 @@
-export const initialStore=()=>{
+export const initialStore = ()=>{
   return{
     characters: [], // Lista de personajes
-    planets: [] // Lista de planetas
-
+    planets: [], // Lista de planetas
+    favorites: []
   };
 };
 
@@ -32,16 +32,18 @@ export default function storeReducer(store, action = {}) {
     
     case 'add_favorite':
       //Evitamos que se repitan 
-      if (store.favorites.includes(action.payload)) return store;
+      if (state.favorites.some(fav => fav.uid === action.payload.uid && fav.type === action.payload.type)) {
+        return state;
+      }
         return{
-          ...store,
-          favorites: [...store.favorites, action.payload]
+          ...state,
+          favorites: [...state.favorites, action.payload]
       };
 
       case  'remove_favorite':
         return {
-          ...store,
-          favorites: store.favorites.filter(name => name !== action.payload)
+          ...state,
+          favorites: state.favorites.filter(fav =>!(fav.uid === action.payload.uid && fav.type === action.payload.type))
         };
       
     default:

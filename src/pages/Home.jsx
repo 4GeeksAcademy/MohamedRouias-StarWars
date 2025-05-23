@@ -54,12 +54,6 @@ export const Home = () => {
 
 
 
-
-
-
-
-
-
 	return (
 		<div className="text-center mt-5">
 			<div className="characters-section container">
@@ -80,7 +74,7 @@ export const Home = () => {
 
 								<div className="card-body">
 									<h5 className="card-title">{char.name}</h5>
-									<Link to={`/details/${char.uid}`} className="btn btn-primary">
+									<Link to={`/details/people/${char.uid}`} className="btn btn-primary">
 										Learn more!
 									</Link>
 									
@@ -110,7 +104,7 @@ export const Home = () => {
 
 								<div className="card-body">
 									<h5 className="card-title">{plan.name}</h5>
-									<Link to={`/details/${plan.uid}`} className="btn btn-primary">
+									<Link to={`/details/planets/${plan.uid}`} className="btn btn-primary">
 										Learn more!
 									</Link>
 								</div>
