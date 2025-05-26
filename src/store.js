@@ -1,8 +1,14 @@
 export const initialStore = () => {
+
+  let savedFavorites = [];
+  
+    const saved = localStorage.getItem("favorites");
+    if(saved) savedFavorites = JSON.parse(saved);
+  
   return {
     characters: [], // Lista de personajes
     planets: [],
-    favorites: [] // Lista de planetas
+    favorites: savedFavorites, // Lista de planetas
    
   };
 };

@@ -9,7 +9,9 @@ export const Navbar = () => {
 		<nav className="navbar navbar-light bg-light">
 			<div className="container">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1">Star Wars</span>
+					<span className="navbar-brand mb-0 h1">
+						<img src="src/assets/img/icons8-estrella-de-la-muerte-32.png" alt="" />
+					</span>
 				</Link>
 				<div className="dropdown ms-auto">
 					<button
@@ -44,7 +46,6 @@ export const Navbar = () => {
 											payload: fav
 										})
 									}
-									
 								>
 								</button>
 

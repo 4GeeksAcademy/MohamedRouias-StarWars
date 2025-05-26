@@ -50,8 +50,13 @@ export const Home = () => {
 			fetchPlanets();
 		}
 
+
 	}, []);
 
+	useEffect(() => {
+		localStorage.setItem("favorites", JSON.stringify(store.favorites));
+
+	}, [store.favorites]);
 
 
 	return (
