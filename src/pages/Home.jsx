@@ -4,7 +4,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 export const Home = () => {
 	const { store, dispatch } = useGlobalReducer();
-	
+
 
 	useEffect(() => {
 		// Cargamos los personajes si no hay ninguno en la store
@@ -77,7 +77,21 @@ export const Home = () => {
 									<Link to={`/details/people/${char.uid}`} className="btn btn-primary">
 										Learn more!
 									</Link>
-									
+									<button
+										className="btn btn-warning ms-2"
+										onClick={() => dispatch({
+											type: store.favorites.some(fav => fav.uid === char.uid && fav.type === "character")
+												? "remove_favorite"
+												: "add_favorite",
+											payload: {
+												uid: char.uid,
+												name: char.name,
+												type: "character"
+											}
+										})}
+									>
+										{store.favorites.some(fav => fav.uid === char.uid && fav.type === "character") ? "💔" : "❤️"}
+									</button>
 								</div>
 							</div>
 						</div>
@@ -107,6 +121,21 @@ export const Home = () => {
 									<Link to={`/details/planets/${plan.uid}`} className="btn btn-primary">
 										Learn more!
 									</Link>
+									<button
+										className="btn btn-warning ms-2"
+										onClick={() => dispatch({
+											type: store.favorites.some(fav => fav.uid === plan.uid && fav.type === "planet")
+												? "remove_favorite"
+												: "add_favorite",
+											payload: {
+												uid: plan.uid,
+												name: plan.name,
+												type: "planet"
+											}
+										})}
+									>
+										{store.favorites.some(fav => fav.uid === plan.uid && fav.type === "planet") ? "💔" : "❤️"}
+									</button>
 								</div>
 							</div>
 						</div>
